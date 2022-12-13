@@ -6,8 +6,6 @@ public class MaquinaExpendedoraMejorada {
     private int balanceClienteActual;
     // El total de dinero almacenado en la maquina desde su ultimo vaciado
     private int totalDineroAcumulado;
-    // La cantidad de dinero que falta para completar el precio del billete
-    private int cantidadDeDineroQueFalta;
     // El origen del billete
     private String estacionOrigen;
     // El destino del billete
@@ -22,7 +20,6 @@ public class MaquinaExpendedoraMejorada {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
-        cantidadDeDineroQueFalta = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
     }
@@ -47,7 +44,6 @@ public class MaquinaExpendedoraMejorada {
     public void introducirDinero(int cantidadIntroducida) {
         if (cantidadIntroducida > 0) {
             balanceClienteActual = balanceClienteActual + cantidadIntroducida;
-            cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
         }
         else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
@@ -73,7 +69,7 @@ public class MaquinaExpendedoraMejorada {
             balanceClienteActual = balanceClienteActual - precioBillete;
         }
         else {
-            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
+            System.out.println("Necesitas introducir " + (precioBillete - balanceClienteActual) + " euros mas!");
                     
         }
     }
